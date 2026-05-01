@@ -17,4 +17,12 @@ block content
 
         section 
             h2 Recent Comments 
-            p Comments will appear here after they have been submitted.
+            
+            if comments && comments.length 
+                each item in comments 
+                    article
+                        h3= item.name 
+                        p= item.comment 
+                        small= item.created_at 
+            else 
+                p No comments yet. Be the first to leave one!

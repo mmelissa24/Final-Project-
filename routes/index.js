@@ -26,7 +26,37 @@ router.get('/about', function(req, res, next) {
 });
 
 router.get('/comments', function(req, res, next) {
-  res.render('comments', { title: 'Customer Comments' });
+  req.db.query('SELECT * FROM comments ORDER BY  created_at DESC LIMIT 10;',(err, results) => {
+    if (err) {
+      console.error('Error fetching comments:', err);
+      return res.status(500).send('Unable to load comments right now.');
+    }
+
+    res.render('comments', {
+      title: 'Customer Comments',
+      comments: results
+    });
+  });
+});
+
+router.post('/comments', function(req, res, next) {
+  const name = req.body.name;
+  const comment = req.body.comment;
+
+  if (!name || !comment) {
+    return res.status(400).send('Name and comment are required,');
+  }
+   req.db.query(
+    'INSTER INTO comments (name, comment) VALUES (?, ?);',
+    [name, comment],
+    (err, results) => {
+      if (err) {
+        console.error('ERROR saving comment:', err);
+        return res.status(500). send('Unable to save comment right now.');
+      }
+      res.redirect('/comments');
+    }
+   );
 });
 
 router.post('/create', function (req, res, next) {
