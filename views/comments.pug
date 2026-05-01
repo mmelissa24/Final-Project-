@@ -4,6 +4,9 @@ block content
     main 
         h1 Customer Comments 
 
+        if error 
+            p.error-message= error
+
         section 
             h2 Leave a Comment
             form(method='POST', action='/comments')

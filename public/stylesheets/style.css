@@ -19,3 +19,8 @@ header {
     nav a {
       text-decoration: none;
     }
+
+.error-message {
+  color: darkred;
+  font-weight:bold;
+}
