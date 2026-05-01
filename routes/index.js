@@ -40,14 +40,22 @@ router.get('/comments', function(req, res, next) {
 });
 
 router.post('/comments', function(req, res, next) {
-  const name = req.body.name;
-  const comment = req.body.comment;
+  const name = req.body.name.trim();
+  const comment = req.body.comment.trim();
 
   if (!name || !comment) {
-    return res.status(400).send('Name and comment are required,');
+    return res.status(400).send('Please enter both your name and a comment.');
+  }
+
+  if (name.length > 100) {
+    return res.status(400).send('Name must be 100 characters or fewer.');
+  }
+
+  if (comment.length > 500) {
+    return res.status(400).send('Comment must be 500 characters or fewer.');
   }
    req.db.query(
-    'INSTER INTO comments (name, comment) VALUES (?, ?);',
+    'INSERT INTO comments (name, `comment`) VALUES (?, ?);',
     [name, comment],
     (err, results) => {
       if (err) {
