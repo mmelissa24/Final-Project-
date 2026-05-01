@@ -25,6 +25,10 @@ router.get('/about', function(req, res, next) {
   res.render('about', { title: 'About Us' });
 });
 
+router.get('/comments', function(req, res, next) {
+  res.render('comments', { title: 'Customer Comments' });
+});
+
 router.post('/create', function (req, res, next) {
     const { task } = req.body;
     try {

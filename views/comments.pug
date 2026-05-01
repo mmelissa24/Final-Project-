@@ -1,0 +1,20 @@
+extends layout 
+
+block content 
+    main 
+        h1 Customer Comments 
+
+        section 
+            h2 Leave a Comment
+            form(mehtod='POST', action='/comments')
+                label(for='name') Name 
+                input(type='text', id='name', name='name')
+
+                label(for='comment') Comment 
+                textarea(id='comment', name='comment')
+
+                button(type='submit') Submit Comment
+
+        section 
+            h2 Recent Comments 
+            p Comments will appear here after they have been submitted.
