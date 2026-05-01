@@ -6,3 +6,16 @@ body {
 a {
   color: #00B7FF;
 }
+
+header {
+      margin-bottom: 30px;
+    }
+
+    nav{
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+    }
