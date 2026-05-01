@@ -21,6 +21,10 @@ router.get('/menu', function(req, res, next) {
   res.render('menu', { title: 'Menu' });
 });
 
+router.get('/about', function(req, res, next) {
+  res.render('about', { title: 'About Us' });
+});
+
 router.post('/create', function (req, res, next) {
     const { task } = req.body;
     try {
