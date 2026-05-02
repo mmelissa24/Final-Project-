@@ -1,6 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
+function sanitizeInput(text) {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 /* GET home page. */
 router.get('/', function(req, res, next){
   try {
@@ -44,8 +53,8 @@ router.get('/comments', function(req, res, next) {
 });
 
 router.post('/comments', function(req, res, next) {
-  const name = req.body.name.trim();
-  const comment = req.body.comment.trim();
+  const name = sanitizeInput(req.body.name.trim());
+  const comment = sanitizeInput(req.body.comment.trim());
 
   if (!name || !comment) {
     return res.render('comments', {
