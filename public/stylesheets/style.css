@@ -1,24 +1,42 @@
+:root {
+  --dark-green: #10291D;
+  --saffron: #F7C64A;
+  --seasalt: #F7F7F7;
+  --cool-gray: #7C7C94;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: var(--seasalt);
+  color: var(--dark-green);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 30px;
 }
 
 a {
-  color: #00B7FF;
+  color: var(--dark-green);
 }
 
 header {
-      margin-bottom: 30px;
-    }
+  background-color: var(--dark-green);
+  padding: 20px;
+  margin: -30px -30px 30px -30px;
+}
 
-    nav{
-      display: flex;
-      gap: 20px;
-    }
+nav {
+  display: flex;
+  gap: 20px;
+}
 
-    nav a {
-      text-decoration: none;
-    }
+nav a {
+  color: var(--seasalt);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: var(--saffron);
+}
 
 .error-message {
   color: darkred;
@@ -46,9 +64,16 @@ textarea {
   min-height: 100px;
 }
 
-button {
+button,
+a.button {
+  background-color: var(--saffron);
+  color: var(--dark-green);
+  border: none;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
   margin-top: 15px;
-  padding: 8px 14px;
 }
 
 .comment-card {
@@ -56,6 +81,7 @@ button {
   padding: 15px;
   margin-bottom: 15px;
   max-width: 600px;
+  background-color: white;
 }
 
 .comment-card h3 {
