@@ -32,6 +32,10 @@ router.get('/comments', function(req, res, next) {
       return res.status(500).send('Unable to load comments right now.');
     }
 
+    results.forEach(function(comment) {
+      comment.postedDate = comment.created_at.toLocaleDateString();
+    });
+
     res.render('comments', {
       title: 'Customer Comments',
       comments: results
