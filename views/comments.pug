@@ -27,5 +27,8 @@ block content
                         h3= item.name 
                         p= item.comment 
                         small posted on #{item.postedDate} 
+                    
+                if hasMore 
+                    a.button(href='/comments?limit=' + nextLimit) load More
             else 
                 p No comments yet. Be the first to leave one!

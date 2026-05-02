@@ -35,19 +35,32 @@ router.get('/about', function(req, res, next) {
 });
 
 router.get('/comments', function(req, res, next) {
-  req.db.query('SELECT * FROM comments ORDER BY  created_at DESC LIMIT 10;',(err, results) => {
+  let limit = parseInt(req.query.limit) || 10;
+
+  if (limit < 10) {
+    limit = 10;
+  }
+
+  const queryLimit = limit + 1
+
+  req.db.query('SELECT * FROM comments ORDER BY  created_at DESC LIMIT ?;', [queryLimit],(err, results) => {
     if (err) {
       console.error('Error fetching comments:', err);
       return res.status(500).send('Unable to load comments right now.');
     }
 
-    results.forEach(function(comment) {
+    const hasMore = results.length > limit;
+    const commentsToShow = results.slice(0, limit);
+
+    commentsToShow.forEach(function(comment) {
       comment.postedDate = comment.created_at.toLocaleDateString();
     });
 
     res.render('comments', {
       title: 'Customer Comments',
-      comments: results
+      comments: commentsToShow,
+      hasMore: hasMore,
+      nextLimit: limit + 10
     });
   });
 });
