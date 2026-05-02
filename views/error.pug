@@ -1,6 +1,7 @@
 extends layout
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  main 
+    h1 Oops, something went wront! 
+    p We are having trouble loading this page right now. Please try again later.
+    a(href='/') return to Home
