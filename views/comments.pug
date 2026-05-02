@@ -23,9 +23,9 @@ block content
             
             if comments && comments.length 
                 each item in comments 
-                    article
+                    article.comment-card
                         h3= item.name 
                         p= item.comment 
-                        small= item.created_at 
+                        small posted on #{item.created_at} 
             else 
                 p No comments yet. Be the first to leave one!
