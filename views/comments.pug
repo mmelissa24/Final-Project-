@@ -9,14 +9,14 @@ block content
 
         section 
             h2 Leave a Comment
-            form(method='POST', action='/comments')
+            form(method='POST', action='/comments' id='commentForm')
                 label(for='name') Name 
                 input(type='text', id='name', name='name')
 
                 label(for='comment') Comment 
                 textarea(id='comment', name='comment')
 
-                button(type='submit') Submit Comment
+                button(type='submit' id='submitCommentButton') Submit Comment
 
         section 
             h2 Recent Comments 
@@ -32,3 +32,4 @@ block content
                     a.button(href='/comments?limit=' + nextLimit) load More
             else 
                 p No comments yet. Be the first to leave one!
+    script(src='/javascripts/comments.js')
