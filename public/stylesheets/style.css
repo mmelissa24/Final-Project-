@@ -169,3 +169,11 @@ a.button {
     max-width: 100%;
   }
 }
+
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 3px solid var(--saffron);
+  outline-offset: 3px;
+}
