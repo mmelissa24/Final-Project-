@@ -249,3 +249,14 @@ textarea:focus {
 .menu-item p {
   color: var(--saffron);
 }
+
+.nav-logo {
+  width: 120px;
+  height: auto;
+  display: block;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+}
